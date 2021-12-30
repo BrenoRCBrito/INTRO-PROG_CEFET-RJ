@@ -1,10 +1,11 @@
-import React from 'react'
-
-export default function a() {
-  return (
-    <div>
-      { 10 + 1 === 11 && <p>MALANDRO</p>}
-      AOBA BAO
-    </div>
-  )
+function teste() {
+  const a = 'Testando';
+  const b = '...';
+  for(let i = 1; i < 4; i += 1) {
+    let message = `${a} ${i}`
+    if(i === 3) message += b;
+    console.log(message);
+  }
 }
+
+teste();
