@@ -16,8 +16,27 @@
 //       vv.xwfxo.fd      gi.r{hyz-xx
 
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+// Biblioteca "char type", com funções de comparação entre caracteres como a "isalpha".
 
 int main () {
-  
+  int n;
+  char linha[1123], inversao[1123];
+  scanf("%d%*c", &n);
+  // O "%*c", lê o próximo caracter e o joga fora.
+  for (int i = 0; i < n; i += 1) {
+    fgets(linha, 1123, stdin);
+    // O "fgets" lê uma string do terceiro argumento "stdin" (standard input) e a guarda na variável do primeiro argumento "linha", que tem o tamanho do segundo argumento "1123".
+    int len = strlen(linha);
+    for (int j = 0; linha[j] != '\0'; j += 1) {
+      if (isalpha(linha[j])) linha[j] += 3;
+      //"isalpha" retorna "1" se a o caracter for alfabético.
+    }
+    for(int j = 0; j < (len - 1); j += 1) inversao[j] = linha[(len - 1) - (j + 1)];
+    inversao[len - 1] = '\0';
+    for (int j = (len - 1) / 2; inversao[j] != '\0'; j += 1) inversao[j] -= 1;
+    puts(inversao);
+  }
   return 0;
 }
